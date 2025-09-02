@@ -78,11 +78,11 @@ fn main() -> Result<(), EspIOError> {
             // Send the transaction to the Solana network
             match send_transaction(&transaction) {
                 Ok(signature) => {
-                    info!("✅ Transaction sent successfully!");
-                    info!("📋 Transaction signature: {}", signature);
+                    info!("Transaction sent successfully!");
+                    info!("Transaction signature: {}", signature);
                 }
                 Err(e) => {
-                    info!("❌ Failed to send transaction: {}", e);
+                    info!("Failed to send transaction: {}", e);
                 }
             }
         } else {

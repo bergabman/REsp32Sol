@@ -2,7 +2,7 @@
 
 A decentralized physical infrastructure (DePIN) project that connects ESP32 microcontrollers to the Solana blockchain. This project demonstrates how to run Solana operations on embedded hardware, including transaction creation, signing, and blockchain interaction. The special part is that it's "std" friendly, using esp_idf_svc provides us an std like environment, helping in writing more complex programs that might require threading, networking on other high level concepts. This environment also allows us to use official solana crates for transaction creation, signing, keypair management and more The no-std environment limits us to core Rust without allocations, threads, or I/O from std. The trade-off is that std binaries are larger and rely on ESP-IDF's initialization (e.g., the link_patches() to fix possible runtime issues).
 
-## 🌟 Features
+## Features
 
 - **WiFi Connectivity**: Connects to WiFi networks for communication
 - **Solana Integration**: Makes RPC calls to Solana networks
@@ -10,14 +10,14 @@ A decentralized physical infrastructure (DePIN) project that connects ESP32 micr
 - **Ed25519 Cryptography**: Secure key generation and transaction signing on-device
 - **Low Power**: Optimized for battery-powered IoT devices, further optimization possible with low power mode
 
-## 🔧 Hardware Requirements
+## Hardware Requirements
 
 - **ESP32-C3 or ESP32-S3** microcontroller if you want to follow this porject, other boards require similar setup
 - **USB connection** for flashing and monitoring, through usb cable
 - **WiFi network** access for blockchain communication and others
 - **4MB+ flash memory** (configured in `partitions.csv` for this project for the Esp32 c3 supermini with 4MB flash memory)
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before setting up this project, ensure you have:
 
@@ -31,7 +31,7 @@ Before setting up this project, ensure you have:
 - Solana RPC endpoints (devnet/mainnet) as needed
 - WiFi network for ESP32 connectivity
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Step 1: Install ESP32 Development Tools for rust
 
@@ -96,7 +96,7 @@ const RPC_URL: &str = "https://api.devnet.solana.com";  // For testing
 // const RPC_URL: &str = "https://api.mainnet-beta.solana.com";  // For production
 ```
 
-## 🛠️ Building and Flashing
+## Building and Flashing
 
 ### Build the Project
 
@@ -131,7 +131,7 @@ cargo espflash monitor --chip esp32c3
 cargo espflash flash --chip esp32c3 --monitor
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 REsp32Sol/
@@ -145,7 +145,7 @@ REsp32Sol/
 └── README.md               # This file
 ```
 
-## ⚙️ Configuration Files that can be customized for your device
+## Configuration Files that can be customized for your device
 
 ### sdkconfig.defaults
 Contains ESP-IDF configuration including:
@@ -159,7 +159,7 @@ Custom partition table allocating:
 - 0.6KB for NVS (Non-Volatile Storage)
 - 1KB for PHY calibration data
 
-## 🔧 Customization
+## Customization
 
 ### Changing Solana Network
 
@@ -208,17 +208,17 @@ impl SolanaRpcMethod {
 }
 ```
 
-## 🔍 Monitoring and Debugging
+## Monitoring and Debugging
 
 ### Serial Output, can be accessed by using the --monitor flag while using espflash 
 The device logs comprehensive information:
-- ✅ WiFi connection status
-- ✅ Blockhash retrieval
-- ✅ Transaction creation and signing
-- ❌ Error messages with context
-- 🔄 System status updates
+- WiFi connection status
+- Blockhash retrieval
+- Transaction creation and signing
+- Error messages with context
+- System status updates
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -230,7 +230,7 @@ Error: espflash::image_too_big
 
 #### 2. WiFi Connection Failed
 ```
-❌ WiFi Connection Failed: Failed to connect to WiFi network
+WiFi Connection Failed: Failed to connect to WiFi network
 ```
 **Solution**:
 - Verify WiFi credentials in `src/main.rs`
@@ -239,7 +239,7 @@ Error: espflash::image_too_big
 
 #### 3. Solana RPC Errors
 ```
-❌ Failed to retrieve blockhash: HTTP Connection Failed
+Failed to retrieve blockhash: HTTP Connection Failed
 ```
 **Solution**:
 - Check internet connectivity
@@ -260,21 +260,21 @@ If the device becomes unresponsive:
 2. Re-flash the firmware
 3. Check power supply stability
 
-## 📊 Performance Characteristics
+## Performance Characteristics
 
 - **Memory Usage**: ~2-3MB application footprint
 - **CPU Usage**: Low power consumption during monitoring
 - **Network**: Minimal bandwidth usage (JSON RPC calls)
 - **Flash Wear**: Low write frequency to flash memory
 
-## 🔒 Security Considerations
+## Security Considerations
 
 - **Key Storage**: Private keys are generated in RAM (consider secure storage for production)
 - **Network Security**: Uses HTTPS for RPC communication
 - **Input Validation**: All user inputs are validated
 - **Error Handling**: Sensitive information is not logged
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -282,24 +282,21 @@ If the device becomes unresponsive:
 4. Test on ESP32 hardware
 5. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙋 Support
+## Support
 
 For support and questions:
 - Check the troubleshooting section above
 - Review ESP32 and Solana documentation
 - Open an issue on the repository
 
-## 🔄 Version History
+## Version History
 
 - **v0.1.0**: Initial release with basic Solana integration
 - WiFi connectivity
 - Transaction creation and signing
 - Real-time blockhash monitoring
 
----
-
-**Happy coding with ESP32 and Solana! 🚀**
